@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+#
+# Package             : scikit-learn
+# Source Repo         : https://github.com/scikit-learn/scikit-learn
+# Travis Job Link     : https://travis-ci.com/github/asellappen/scikit-learn/
+# Created travis.yml  : No
+# Maintainer          : Arumugam N S <asellappen@yahoo.com> / Priya Seth<sethp@us.ibm.com>
+#
+# Script License      : Apache License, Version 2 or later
+#
+# ----------------------------------------------------------------------------
+
 # Make it explicit that we favor the
 # new container-based Travis workers
 language: python
@@ -68,10 +80,31 @@ jobs:
       env:
         - BUILD_WHEEL=true
         - CIBW_BUILD=cp38-manylinux_aarch64
-
     - python: 3.9
       os: linux
       arch: arm64
+      if: type = cron or commit_message =~ /\[cd build\]/
+      env:
+        - BUILD_WHEEL=true
+        - CIBW_BUILD=cp39-manylinux_aarch64
+    - python: 3.7
+      os: linux
+      arch: ppc64le
+      if: type = cron or commit_message =~ /\[cd build\]/
+      env:
+        - BUILD_WHEEL=true
+        - CIBW_BUILD=cp37-manylinux_aarch64
+    - python: 3.8
+      os: linux
+      arch: ppc64le
+      if: type = cron or commit_message =~ /\[cd build\]/
+      env:
+        - BUILD_WHEEL=true
+        - CIBW_BUILD=cp38-manylinux_aarch64   
+   
+    - python: 3.9
+      os: linux
+      arch: ppc64le
       if: type = cron or commit_message =~ /\[cd build\]/
       env:
         - BUILD_WHEEL=true
