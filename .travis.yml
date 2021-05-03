@@ -101,7 +101,6 @@ jobs:
       env:
         - BUILD_WHEEL=true
         - CIBW_BUILD=cp38-manylinux_aarch64   
-   
     - python: 3.9
       os: linux
       arch: ppc64le
